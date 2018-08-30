@@ -16,7 +16,7 @@ def _authenticate_request():
 
 
 def protect_request(func):
-    def wrapper():
+    def wrapper():  # pylint: disable=inconsistent-return-statements
         if _authenticate_request():
             response = func()
             response.headers['X-Auth-Token'] = TOKEN
