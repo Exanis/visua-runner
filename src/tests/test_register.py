@@ -19,11 +19,11 @@ def test_launch_register(getenv_mock, post_mock):
     getenv_mock.return_value = 'testing'
     post_mock.return_value = FakeRequestResult()
     key = connect_to_api()
-    post_mock.assert_called_once_with('testing', {
+    post_mock.assert_called_once_with('testing/api/project/runner/', {
         'token': 'testing',
         'name': 'testing',
         'addr': 'testing'
-    })
+    }, verify=True)
     assert key == 'test'
 
 

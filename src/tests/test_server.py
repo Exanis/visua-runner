@@ -22,3 +22,11 @@ def test_bad_auth(client):
     assert result.status_code == 401
     result = client.get('/ping', headers={'X-Auth-Token': 'bad_auth'})
     assert result.status_code == 401
+
+
+@patch('runner.server.connect_to_api')
+def test_get_app(mock_connect):
+    mock_connect.return_value = 'test'
+    server.get_app()
+    mock_connect.assert_called_once()
+    assert server.TOKEN == 'test'

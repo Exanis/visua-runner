@@ -31,6 +31,11 @@ def ping():
     return make_response('', 204)
 
 
+def get_app():
+    launch()
+    return APP
+
+
 def launch():
     global TOKEN  # pylint: disable=global-statement
 
